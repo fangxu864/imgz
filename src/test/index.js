@@ -12,7 +12,9 @@ var cropper = new Cropper(image, {
     crop: function(e) {
     }
 });
-
+window.imgConfig = {
+    quality : 0.2
+}
 function dataURLtoBlob(dataurl) {
     var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
         bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
@@ -23,9 +25,10 @@ function dataURLtoBlob(dataurl) {
 }
 $(function () {
     $(document).on("keydown",function (e) {
-        if(e.keyCode !== 32){
+        console.log(e.keyCode)
+        if(e.keyCode == 38){
             var canvas = cropper.getCroppedCanvas({width:114 ,height :156});
-            var dataURL = canvas.toDataURL('image/jpeg',0.96);
+            var dataURL = canvas.toDataURL('image/jpeg',window.imgConfig.quality);
             // console.log(dataURL);
             // console.log(dataURL.length)
             // var aHref = $('<a href="'+dataURL+'" download="download">xiazai</a>');
