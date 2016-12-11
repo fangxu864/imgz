@@ -13,24 +13,38 @@ var cropper = new Cropper(image, {
     }
 });
 
+function dataURLtoBlob(dataurl) {
+    var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
+        bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
+    while(n--){
+        u8arr[n] = bstr.charCodeAt(n);
+    }
+    return new Blob([u8arr], {type:mime});
+}
 $(function () {
     $(document).on("keydown",function (e) {
-        if(e.keyCode == 32){
-            var canvas = cropper.getCroppedCanvas({width : 114 ,height :156});
-            var dataURL = canvas.toDataURL('image/jpeg',0.86);
-            console.log(dataURL)
-            var aHref = $('<a href="'+dataURL+'" download="download">xiazai</a>')
-            $("body").append(aHref);
+        if(e.keyCode !== 32){
+            var canvas = cropper.getCroppedCanvas({width:114 ,height :156});
+            var dataURL = canvas.toDataURL('image/jpeg',0.96);
+            // console.log(dataURL);
+            // console.log(dataURL.length)
+            // var aHref = $('<a href="'+dataURL+'" download="download">xiazai</a>');
+            // $("body").append(aHref);
             // canvas.toBlob(function(blob) {
             //     console.log(blob)
-            //     FileSaver.saveAs(blob, "pretty image.png");
+            //     FileSaver.saveAs(blob, "pretty image.jpg");
             // });
+            FileSaver.saveAs(dataURLtoBlob(dataURL), "pretty image.jpg");
         }
     })
     $("#uploadimg").on("change" , function () {
         console.log($(this).get(0).files[0]);
+
         fReader.readAsDataURL($(this).get(0).files[0]);
-        fReader.onload = function (e) {
+        fReader.onloadend = function (e) {
+            console.log(this)
+            console.log(e)
+
             cropper.replace(this.result)
         }
 
