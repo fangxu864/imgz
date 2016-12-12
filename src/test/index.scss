@@ -1,13 +1,11 @@
 body {
-  margin: 0;
+  margin: 0 ;
   padding: 0;
 }
-.image_box{
-  width: 800px;
-  height: 500px;
-  border: 2px solid #cccccc;
-  overflow: hidden;
+img {
+  max-width: 100%; /* This rule is very important, please do not ignore this! */
 }
-#image1{
-  max-width: 100%;
+.img_box{
+  width: 500px;
+  height:500px;
 }

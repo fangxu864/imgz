@@ -4,7 +4,8 @@
   "description": "img  zip",
   "main": "index.js",
   "dependencies": {
-    "cropperjs": "^1.0.0-alpha"
+    "cropperjs": "^1.0.0-alpha",
+    "file-saver": "^1.3.3"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
