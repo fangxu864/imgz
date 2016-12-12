@@ -43,31 +43,31 @@ $(function () {
             console.log(Number(dataURLtoBlob(dataURL).size / 1024).toFixed(2)+"Kb");
             FileSaver.saveAs(dataURLtoBlob(dataURL), "pretty image.jpg");
         }
-    })
+    });
     $("#uploadimg").on("change" , function () {
         // console.log($(this).get(0).files[0]);
 
         fReader.readAsDataURL($(this).get(0).files[0]);
         fReader.onloadend = function (e) {
-            console.log(this)
-            console.log(e)
+            console.log(this);
+            console.log(e);
 
             cropper.replace(this.result)
-        }
+        };
         // var img = file($(this).get(0).files[0])
         // var reader = img.toDataURL(function(err, str){
         //     if (err) throw err;
         //     cropper.replace(str)
         // });
 
-    })
+    });
     $("#clear").on("click",function () {
         cropper.clear()
-    })
+    });
     $("#reset").on("click",function () {
         cropper.reset()
-    })
+    });
     $("#crop").on("click",function () {
         cropper.crop()
     })
-})
+});
