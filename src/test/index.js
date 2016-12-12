@@ -25,7 +25,6 @@ function dataURLtoBlob(dataurl) {
 }
 $(function () {
     $(document).on("keydown",function (e) {
-        console.log(e.keyCode)
         if(e.keyCode == 38){
             var canvas = cropper.getCroppedCanvas({width:114 ,height :156});
             var dataURL = canvas.toDataURL('image/jpeg',window.imgConfig.quality);
@@ -37,7 +36,7 @@ $(function () {
             //     console.log(blob)
             //     FileSaver.saveAs(blob, "pretty image.jpg");
             // });
-            console.log(dataURLtoBlob(dataURL))
+            console.log(Number(dataURLtoBlob(dataURL).size / 1024).toFixed(2))
             FileSaver.saveAs(dataURLtoBlob(dataURL), "pretty image.jpg");
         }
     })
