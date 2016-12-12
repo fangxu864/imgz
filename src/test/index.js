@@ -36,7 +36,7 @@ $(function () {
             //     console.log(blob)
             //     FileSaver.saveAs(blob, "pretty image.jpg");
             // });
-            console.log(Number(dataURLtoBlob(dataURL).size / 1024).toFixed(2))
+            console.log(Number(dataURLtoBlob(dataURL).size / 1024).toFixed(2)+"Kb");
             FileSaver.saveAs(dataURLtoBlob(dataURL), "pretty image.jpg");
         }
     })
