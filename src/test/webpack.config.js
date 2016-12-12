@@ -2,12 +2,13 @@
 var webpack = require('webpack');
 // var commonsPlugin = new webpack.optimize.CommonsChunkPlugin('common.js');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var parentDir = __dirname.match(/[^\\][a-zA-Z]+$/)[0] ;
 
 module.exports = {
     //插件项
     // plugins: [commonsPlugin, new ExtractTextPlugin("[name].css")],
     plugins: [
-        new ExtractTextPlugin("[name].css"),
+        new ExtractTextPlugin(parentDir+".all.css"),
         // new webpack.optimize.UglifyJsPlugin({
         //     compress: {
         //         warnings : false
@@ -17,12 +18,12 @@ module.exports = {
     ],
     //页面入口文件配置
     entry: {
-        index : './src/test/index.js'
+        index : './index.js'
     },
     //入口文件输出配置
     output: {
-        path: './build',
-        filename: '[name].js'
+        path: '../../build',
+        filename: parentDir+".all.js"
     },
     module: {
         //加载器配置

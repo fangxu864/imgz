@@ -1,7 +1,9 @@
 /**
  * Created by Administrator on 2016/12/8.
  */
+var Blob = require('blob');
 var fReader = new FileReader();
+// var file = require('file-component');
 require ("./canvas-toBlob.js");
 var FileSaver = require('file-saver');
 var Cropper = require("cropperjs");
@@ -9,6 +11,7 @@ require("./index.scss");
 var image = document.getElementById('image');
 var cropper = new Cropper(image, {
     aspectRatio: 114 / 156,
+    dragMode :"move",
     crop: function(e) {
     }
 });
@@ -41,7 +44,7 @@ $(function () {
         }
     })
     $("#uploadimg").on("change" , function () {
-        console.log($(this).get(0).files[0]);
+        // console.log($(this).get(0).files[0]);
 
         fReader.readAsDataURL($(this).get(0).files[0]);
         fReader.onloadend = function (e) {
@@ -50,6 +53,20 @@ $(function () {
 
             cropper.replace(this.result)
         }
+        // var img = file($(this).get(0).files[0])
+        // var reader = img.toDataURL(function(err, str){
+        //     if (err) throw err;
+        //     cropper.replace(str)
+        // });
 
+    })
+    $("#clear").on("click",function () {
+        cropper.clear()
+    })
+    $("#reset").on("click",function () {
+        cropper.reset()
+    })
+    $("#crop").on("click",function () {
+        cropper.crop()
     })
 })
