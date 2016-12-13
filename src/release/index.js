@@ -157,5 +157,5 @@
 
     $(function () {
         ImgZ.init();
-        ImgZ.updateCropSize(NaN)
+        ImgZ.updateCropSize(2)
     });
