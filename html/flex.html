@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>Title</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        .con_lt{
+            height: 200px;
+            width: 62%;
+            background-color: #3399ff;
+            margin: 5px 0;
+        }
+        .con_rt{
+            width: 35%;
+            height: 200px;
+            background-color: burlywood;
+            margin: 5px 0;
+        }
+        @media screen and ( max-width: 640px){
+            .box{
+                width: 100%;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-around;
+                flex-direction : column;
+                align-items: center;
+            }
+            .con_lt{
+                height: 200px;
+                width: 95%;
+                background-color: #3399ff;
+            }
+            .con_rt{
+                width: 95%;
+                height: 200px;
+                background-color: burlywood;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="con_lt">
+
+    </div>
+    <div class="con_rt"></div>
+</div>
+</body>
+</html>

@@ -2,20 +2,25 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <title>Title</title>
     <link rel="stylesheet" href="../build/release.all.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/0.8.1/cropper.css">
     <script typet="text/javascript" src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
 </head>
 <body>
-<div class="img_box">
-    <img id="image" src="picture.jpg">
+<div class="box">
+    <div class="con_lt">
+        <div class="img_box">
+            <img id="image" src="picture.jpg">
+        </div>
+    </div>
+    <div class="con_rt">
+        <input type="file" value="" id="uploadimg"/><br/>
+        <button id="clear">clear()</button><br/>
+        <button id="reset">reset()</button><br/>
+        <button id="crop">crop()</button><br/>
+    </div>
 </div>
-<input type="file" value="" id="uploadimg"/><br/>
-<button id="clear">clear()</button><br/>
-<button id="reset">reset()</button><br/>
-<button id="crop">crop()</button><br/>
-
 
 
 <script src="../build/release.all.js"></script>
