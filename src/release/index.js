@@ -105,7 +105,7 @@
             //右旋按钮
             $("#icon-youxuanzhuan").on("click",function () {
                 _this.cropper.rotate(45)
-            })
+            });
             $(".main_con .con_rt").on("mouseover" , "i" , function () {
                 tip.show({
                     direction : "right" ,
@@ -115,7 +115,11 @@
                 })
             }).on("mouseout" , function () {
                 tip.closeAllTips();
+            });
+            $("#width_inp").on("blur",function () {
+                
             })
+            
         },
         /**
          * dataURLtoBlob
@@ -144,6 +148,14 @@
                 scale = size || Number(_this.imgConfig.width) / Number(_this.imgConfig.height);
             }
             this.cropper.setAspectRatio( scale );
+        },
+        /**
+         * countSize 计算裁剪后图片尺寸大小
+         */
+        countSize : function () {
+            var canvas = _this.cropper.getCroppedCanvas({width:_this.imgConfig.width ,height :_this.imgConfig.height});
+            var dataURL = canvas.toDataURL('image/jpeg',_this.imgConfig.quality);
+            return Number(_this.dataURLtoBlob(dataURL).size / 1024).toFixed(2)+"Kb";
         },
         /**
          * imgConfig 图片裁剪配置
