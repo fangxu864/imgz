@@ -9,9 +9,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "test-start" : "webpack --watch --progress --colors --config ./src/test/webpack.config.js",
-    "release-start" : "webpack --watch --progress --colors --config ./src/release/webpack.config.js"
-
+    "test-start": "webpack --watch --progress --colors --config ./src/test/webpack.config.js",
+    "release-start": "webpack --watch --progress --colors --config ./src/release/webpack.config.js"
   },
   "repository": {
     "type": "git",

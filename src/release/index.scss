@@ -44,6 +44,15 @@
         border-radius: 2px;
         margin: 5px 5px;
       }
+      .config_box{
+        width: 100%;
+        height: 200px;
+        background-color: antiquewhite;
+        .line{
+          line-height: 30px;
+          padding: 0 10px;
+        }
+      }
     }
   }
 
@@ -66,7 +75,7 @@
     }
     .con_rt{
       width: 95%;
-      max-height: 300px;
+
     }
   }
 }
