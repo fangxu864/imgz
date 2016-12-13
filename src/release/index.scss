@@ -46,11 +46,26 @@
       }
       .config_box{
         width: 100%;
-        height: 200px;
         background-color: antiquewhite;
         .line{
-          line-height: 30px;
+          line-height: 40px;
           padding: 0 10px;
+          input{
+            width: 160px;
+            height: 22px;
+            line-height: 22px;
+            border: 1px solid #e5e5e5;
+            padding-left: 5px;
+            padding-right: 5px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            text-indent: 0;
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+            outline: none;
+          }
+          .inp_lt{
+
+          }
         }
       }
     }

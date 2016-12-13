@@ -24,6 +24,7 @@
                 aspectRatio: _this.imgConfig.width / _this.imgConfig.height,
                 dragMode :"move",
                 crop: function(e) {
+                    $("#output_size").text( _this.countSize())
                 }
             });
             this.bind();
@@ -45,7 +46,7 @@
                 //     console.log(blob)
                 //     FileSaver.saveAs(blob, "pretty image.jpg");
                 // });
-                console.log(Number(_this.dataURLtoBlob(dataURL).size / 1024).toFixed(2)+"Kb");
+                // console.log(Number(_this.dataURLtoBlob(dataURL).size / 1024).toFixed(2)+"Kb");
                 FileSaver.saveAs(_this.dataURLtoBlob(dataURL), "pretty image.jpg");
             });
             //选择文件
@@ -56,9 +57,9 @@
                 // console.log($(this).get(0).files[0]);
                 fReader.readAsDataURL($(this).get(0).files[0]);
                 fReader.onloadend = function (e) {
-                    console.log(this);
-                    console.log(e);
-                    this.cropper.replace(this.result)
+                    // console.log(this);
+                    // console.log(e);
+                    _this.cropper.replace(this.result)
                 };
                 // var img = file($(this).get(0).files[0])
                 // var reader = img.toDataURL(function(err, str){
@@ -116,10 +117,21 @@
             }).on("mouseout" , function () {
                 tip.closeAllTips();
             });
-            $("#width_inp").on("blur",function () {
-                
+            $("#width_inp").on("input propertychange",function () {
+                _this.imgConfig.width = Number($(this).val()) || _this.imgConfig.width ;
+                _this.updateCropSize();
+                $("#output_size").text( _this.countSize())
+            });
+            $("#height_inp").on("input propertychange",function () {
+                _this.imgConfig.height = Number($(this).val()) || _this.imgConfig.height;
+                _this.updateCropSize();
+                $("#output_size").text( _this.countSize())
+            });
+            $("#quality_inp").on("input propertychange",function () {
+                _this.imgConfig.quality = Number($(this).val()) / 100 || _this.imgConfig.quality;
+                // console.log(_this.imgConfig.quality);
+                $("#output_size").text( _this.countSize())
             })
-            
         },
         /**
          * dataURLtoBlob
@@ -142,7 +154,7 @@
         updateCropSize : function (size) {
             var _this = this ,
                 scale = 1;
-            if( size || isNaN(size) ){
+            if(arguments.length > 1 && isNaN(size) ){
                 scale = size
             }else{
                 scale = size || Number(_this.imgConfig.width) / Number(_this.imgConfig.height);
@@ -153,6 +165,7 @@
          * countSize 计算裁剪后图片尺寸大小
          */
         countSize : function () {
+            var _this = this;
             var canvas = _this.cropper.getCroppedCanvas({width:_this.imgConfig.width ,height :_this.imgConfig.height});
             var dataURL = canvas.toDataURL('image/jpeg',_this.imgConfig.quality);
             return Number(_this.dataURLtoBlob(dataURL).size / 1024).toFixed(2)+"Kb";

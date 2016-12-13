@@ -9,12 +9,12 @@ module.exports = {
     // plugins: [commonsPlugin, new ExtractTextPlugin("[name].css")],
     plugins: [
         new ExtractTextPlugin(parentDir+".all.css"),
-        // new webpack.optimize.UglifyJsPlugin({
-        //     compress: {
-        //         warnings : false
-        //     },
-        //     sourceMap : false
-        // })
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings : false
+            },
+            sourceMap : false
+        })
     ],
     //页面入口文件配置
     entry: {
