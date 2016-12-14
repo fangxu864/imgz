@@ -182,5 +182,4 @@
 
     $(function () {
         ImgZ.init();
-        ImgZ.updateCropSize(2)
     });
