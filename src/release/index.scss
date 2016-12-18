@@ -3,6 +3,7 @@
   body{
     margin: 0;
     padding: 0;
+    font-family: "Microsoft YaHei";
   }
   section.main_con{
     margin: 0 auto;
@@ -46,7 +47,6 @@
       }
       .config_box{
         width: 100%;
-        background-color: antiquewhite;
         .line{
           line-height: 40px;
           padding: 0 10px;
@@ -68,6 +68,21 @@
           }
           .inp_lt{
 
+          }
+        }
+        .line1{
+          background-color: #e7e7e7;
+          margin-bottom: 10px;
+        }
+        .line6{
+          font-size: 12px;
+          padding-left: 36px;
+          span.btn{
+            background-color: #FFC107;
+            cursor: pointer;
+            padding: 3px 5px;
+            border-radius: 5px;
+            margin-left: 10px;
           }
         }
       }

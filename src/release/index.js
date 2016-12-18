@@ -132,6 +132,25 @@
                 _this.imgConfig.quality = Number($(this).val()) / 100 || _this.imgConfig.quality;
                 // console.log(_this.imgConfig.quality);
                 $("#output_size").text( _this.countSize())
+            });
+            $(".config_box .line6").on("click",function(e){
+                //清除按钮
+                if($(e.target).hasClass("clear_btn")){
+                   $("#width_inp").val("");
+                   $("#height_inp").val("");
+                    _this.imgConfig.width = 0 ;
+                    _this.imgConfig.height = 0 ;
+                    _this.updateCropSize();
+                }else{
+                    console.log($(e.target).attr("data-width"));
+                    var width = Number( $(e.target).attr("data-width") );
+                    var height = Number( $(e.target).attr("data-height") );
+                    $("#width_inp").val(width);
+                    $("#height_inp").val(height);
+                    _this.imgConfig.width = width ;
+                    _this.imgConfig.height = height ;
+                    _this.updateCropSize();
+                }
             })
         },
         /**
@@ -175,7 +194,7 @@
          * imgConfig 图片裁剪配置
          */
         imgConfig : {
-            quality : 0.2 ,
+            quality : 1 ,
             width : 0 ,
             height : 0 ,
             aspectRatio : function () {
