@@ -19,9 +19,10 @@
          */
         init : function () {
             var _this = this ;
+            console.log( _this.imgConfig.aspectRatio());
             var image = document.getElementById('image');
             this.cropper = new Cropper(image, {
-                aspectRatio: _this.imgConfig.width / _this.imgConfig.height,
+                aspectRatio:  _this.imgConfig.aspectRatio(),
                 dragMode :"move",
                 crop: function(e) {
                     $("#output_size").text( _this.countSize())
@@ -118,12 +119,12 @@
                 tip.closeAllTips();
             });
             $("#width_inp").on("input propertychange",function () {
-                _this.imgConfig.width = Number($(this).val()) || _this.imgConfig.width ;
+                _this.imgConfig.width = Number($(this).val()) || 0 ;
                 _this.updateCropSize();
                 $("#output_size").text( _this.countSize())
             });
             $("#height_inp").on("input propertychange",function () {
-                _this.imgConfig.height = Number($(this).val()) || _this.imgConfig.height;
+                _this.imgConfig.height = Number($(this).val()) || 0;
                 _this.updateCropSize();
                 $("#output_size").text( _this.countSize())
             });
@@ -175,8 +176,16 @@
          */
         imgConfig : {
             quality : 0.2 ,
-            width : 114 ,
-            height : 156
+            width : 0 ,
+            height : 0 ,
+            aspectRatio : function () {
+                if(this.width === 0 || this.height === 0){
+                    return NaN ;
+                }else{
+                    return this.width / this.height;
+                }
+
+            }
         }
     };
 
