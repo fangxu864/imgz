@@ -19,7 +19,6 @@
          */
         init : function () {
             var _this = this ;
-            console.log( _this.imgConfig.aspectRatio());
             var image = document.getElementById('image');
             this.cropper = new Cropper(image, {
                 aspectRatio:  _this.imgConfig.aspectRatio(),
@@ -141,8 +140,7 @@
                     _this.imgConfig.width = 0 ;
                     _this.imgConfig.height = 0 ;
                     _this.updateCropSize();
-                }else{
-                    console.log($(e.target).attr("data-width"));
+                }else if($(e.target).hasClass("quick_btn")){
                     var width = Number( $(e.target).attr("data-width") );
                     var height = Number( $(e.target).attr("data-height") );
                     $("#width_inp").val(width);
@@ -210,4 +208,23 @@
 
     $(function () {
         ImgZ.init();
+        $.ajax({
+            url: "/tongji.php",                                //请求的url地址"/r/report_statistics/orderList/"
+            dataType: "json",                            //返回格式为json
+            async: true,                                  //请求是否异步，默认为异步，这也是ajax重要特性
+            data: {"add":2},                            //参数值
+            type: "post",                                  //请求方式
+            beforeSend: function() {
+                //请求前的处理
+            },
+            success: function(res) {
+
+            },
+            complete: function() {
+                //请求完成的处理
+            },
+            error: function() {
+                //请求出错处理
+            }
+        });
     });

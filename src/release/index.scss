@@ -5,6 +5,14 @@
     padding: 0;
     font-family: "Microsoft YaHei";
   }
+  header{
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    font-size: 20px;
+    border-bottom: 1px solid #e5e5e5;
+    margin-bottom: 10px;
+  }
   section.main_con{
     margin: 0 auto;
     width: 80%;
@@ -112,3 +120,15 @@
     }
   }
 }
+
+  footer{
+    width: 100%;
+    margin-top: 50px;
+    height: 50px;
+    .con{
+      width: 308px;
+      margin: 0 auto;
+      font-size: 12px;
+      color: #B2B2B2;
+    }
+  }
