@@ -4,13 +4,21 @@
   "description": "img  zip",
   "main": "index.js",
   "dependencies": {
+    "babel-preset-react": "^6.16.0",
+    "babelify": "^7.3.0",
     "cropperjs": "^1.0.0-alpha",
-    "file-saver": "^1.3.3"
+    "css3transform": "^1.0.1",
+    "file-saver": "^1.3.3",
+    "react": "^15.4.1",
+    "react-dom": "^15.4.1"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "test-start": "webpack --watch --progress --colors --config ./src/test/webpack.config.js",
-    "release-start": "webpack --watch --progress --colors --config ./src/release/webpack.config.js"
+    "release-start": "webpack --watch --progress --colors --config ./src/release/webpack.config.js",
+    "transformjs-start": "webpack --watch --progress --colors --config ./src/transformjs/webpack.config.js",
+    "alloytouch-start": "webpack --watch --progress --colors --config ./src/alloytouch/webpack.config.js",
+    "react-start": "webpack --watch --progress --colors --config ./src/react/webpack.config.js"
   },
   "repository": {
     "type": "git",
@@ -23,8 +31,10 @@
   },
   "homepage": "https://github.com/fangxu864/imgz#readme",
   "devDependencies": {
+    "alloytouch": "^0.1.4",
     "blob": "^0.0.4",
     "css-loader": "^0.23.1",
+    "css3transform": "^1.0.1",
     "cssnext-loader": "^1.0.1",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-component": "^0.1.0",
