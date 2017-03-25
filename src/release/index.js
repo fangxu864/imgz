@@ -5,14 +5,19 @@
     require("./index.scss");
     require ("./cropper.scss");
     //modules
-    var Blob = require('blob');
+    // var Blob = require('blob');
     var fReader = new FileReader();
     require ("./canvas-toBlob.js");
     var FileSaver = require('file-saver');
     var Cropper = require("cropperjs");
     var Tips = require ("./tips");
     var tip = new Tips;
+    var  imgZ = {
+        fang : function (){},
+        xu : function(){
 
+        }
+    }
     var  ImgZ = {
         /**
          * 初始化
@@ -47,7 +52,7 @@
                 //     FileSaver.saveAs(blob, "pretty image.jpg");
                 // });
                 // console.log(Number(_this.dataURLtoBlob(dataURL).size / 1024).toFixed(2)+"Kb");
-                FileSaver.saveAs(_this.dataURLtoBlob(dataURL), "pretty image.jpg");
+                FileSaver.saveAs(_this.dataURLtoBlob(dataURL), _this.fileName + ".jpg");
             });
             //选择文件
             $("#choose_file").on("click",function () {
@@ -55,6 +60,8 @@
             });
             $("#uploadimg").on("change" , function () {
                 // console.log($(this).get(0).files[0]);
+                var file = $(this).get(0).files[0];
+                _this.fileName = file.name.match(/[^.]+/);
                 fReader.readAsDataURL($(this).get(0).files[0]);
                 fReader.onloadend = function (e) {
                     // console.log(this);
@@ -203,7 +210,14 @@
                 }
 
             }
-        }
+        },
+
+
+        /**
+         * @property fileName 保存文件的文件名片
+         * 默认为 quanmingpian.jpg
+         */
+        fileName : "quanmingpian"
     };
 
     $(function () {
